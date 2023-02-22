@@ -469,6 +469,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1013759175}
   - component: {fileID: 1013759174}
+  - component: {fileID: 1013759176}
   m_Layer: 0
   m_Name: spike
   m_TagString: Untagged
@@ -541,6 +542,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1013759176
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013759173}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4.1505437, y: 1.47}
+    newSize: {x: 4.1505437, y: 1.47}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4.1505437, y: 1.47}
+  m_EdgeRadius: 0
 --- !u!1 &1192438793
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,6 +578,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1192438795}
   - component: {fileID: 1192438794}
+  - component: {fileID: 1192438796}
   m_Layer: 0
   m_Name: door
   m_TagString: Untagged
@@ -623,6 +651,32 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!61 &1192438796
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1192438793}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 1
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.8003666, y: 4.38}
+    newSize: {x: 2.8003666, y: 4.38}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.8003666, y: 4.38}
+  m_EdgeRadius: 0
 --- !u!1 &1286632185
 GameObject:
   m_ObjectHideFlags: 3
