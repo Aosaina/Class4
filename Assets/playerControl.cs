@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class playerControl : MonoBehaviour
 {
@@ -67,7 +69,6 @@ public class playerControl : MonoBehaviour
         {
             grounded = true;
 
-
         }
 
 
@@ -78,6 +79,30 @@ public class playerControl : MonoBehaviour
         }
 
         myBoby.velocity = new Vector3(moveSpeed, myBoby.velocity.y, 0);
+    }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+
+        if (other.gameObject.name == "door")
+        {
+            Debug.Log("you hit me!");
+            SceneManager.LoadScene("game2");
+        }
+
+        if(other.gameObject.name == "win")
+        {
+            SceneManager.LoadScene("Win");
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.collider.CompareTag("spike"))
+        {
+            SceneManager.LoadScene("Lose");
+        }
+
     }
 }
 
