@@ -6,22 +6,16 @@ using UnityEngine.SceneManagement;
 
 public class playerControl : MonoBehaviour
 {
-
     float horizontalMove;
     public float speed;
-
     Rigidbody2D myBoby;
-
-
     bool grounded = false;
-
     public float castDist = 0.2f;
     public float gravityScale = 5f;
     public float gravityFall = 40f;
     public float jumpLimit = 2f;
-
-
     bool jump = false;
+    int jumpCount = 0; // Keep track of the number of jumps
 
     // Start is called before the first frame update
     void Start()
@@ -35,8 +29,9 @@ public class playerControl : MonoBehaviour
         horizontalMove = Input.GetAxis("Horizontal");
         Debug.Log(horizontalMove);
 
-        if (Input.GetButtonDown("Jump") && grounded)
+        if (Input.GetButtonDown("Jump") && (grounded || jumpCount < 1)) // Check if the player is on the ground or has not exceeded the maximum number of jumps
         {
+            jumpCount++;
             jump = true;
         }
 
@@ -48,6 +43,7 @@ public class playerControl : MonoBehaviour
 
         if (jump)
         {
+            myBoby.velocity = new Vector2(myBoby.velocity.x, 0); // Reset the y velocity before jumping
             myBoby.AddForce(Vector2.up * jumpLimit, ForceMode2D.Impulse);
             jump = false;
         }
@@ -68,11 +64,9 @@ public class playerControl : MonoBehaviour
         if (hit.collider != null && hit.collider.CompareTag("ground"))
         {
             grounded = true;
-
+            jumpCount = 0; // Reset the jump count when the player lands on the ground
         }
-
-
-        else //if (hit.transform.tag != "ground")
+        else
         {
             grounded = false;
             Debug.Log("ungrounded!");
@@ -83,14 +77,13 @@ public class playerControl : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-
         if (other.gameObject.name == "door")
         {
             Debug.Log("you hit me!");
             SceneManager.LoadScene("game2");
         }
 
-        if(other.gameObject.name == "win")
+        if (other.gameObject.name == "win")
         {
             SceneManager.LoadScene("Win");
         }
@@ -98,12 +91,15 @@ public class playerControl : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.collider.CompareTag("spike"))
+        if (other.collider.CompareTag("spike"))
+        {
+            SceneManager.LoadScene("Lose");
+        }
+
+        if(other.gameObject.name == "death")
         {
             SceneManager.LoadScene("Lose");
         }
 
     }
 }
-
-
