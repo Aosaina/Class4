@@ -63,13 +63,14 @@ public class playerControl : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, castDist);
         Debug.DrawRay(transform.position, Vector2.down, Color.red);
 
-        if (hit.collider != null) {
-            if (hit.collider.CompareTag("ground"))
-            {
-                grounded = true;
-                Debug.Log("grounded!");
-            }
+        if (hit.collider != null && hit.collider.CompareTag("ground"))
+        {
+            grounded = true;
+
+
         }
+
+
         else //if (hit.transform.tag != "ground")
         {
             grounded = false;
@@ -79,3 +80,5 @@ public class playerControl : MonoBehaviour
         myBoby.velocity = new Vector3(moveSpeed, myBoby.velocity.y, 0);
     }
 }
+
+
